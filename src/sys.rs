@@ -5,7 +5,7 @@ cfg_if::cfg_if! {
     } else if #[cfg(target_vendor = "apple")] {
         mod apple;
         pub(crate) use apple::*;
-    } else if #[cfg(target_os = "linux")] {
+    } else if #[cfg(all(feature = "polkit", target_os = "linux"))] {
         mod linux;
         pub(crate) use linux::*;
     } else if #[cfg(target_os = "windows")] {
