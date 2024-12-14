@@ -49,10 +49,10 @@ features = ["NSError", "NSString"]
 version = "0.5.2"
 default-features = false
 
-[target.'cfg(target_os = "linux")'.dependencies.polkit]
+[target.'cfg(all(feature = "polkit", target_os = "linux"))'.dependencies.polkit]
 version = "=0.17.0"
 
-[target.'cfg(target_os = "linux")'.dependencies.gio]
+[target.'cfg(all(feature = "polkit", target_os = "linux"))'.dependencies.gio]
 version = "=0.17.0"
 
 [target.'cfg(target_os = "windows")'.dependencies.retry]
@@ -82,6 +82,7 @@ default-features = false
 
 [features]
 default = []
+polkit = []
 ## Enable this feature to expose non-blocking asynchronous authentication APIs.
 async = ["dep:tokio"]
 ## Note: there is a UWP feature still in the code,
